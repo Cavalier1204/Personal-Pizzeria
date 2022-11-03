@@ -11,6 +11,7 @@ html {
 body {
     min-height: 100vh;
     width: 100%;
+    padding-top: 96px;
 }
 
 .button {
@@ -22,9 +23,16 @@ body {
     text-decoration: none;
 }
 
-.navBar {
+.topBar {
     position: fixed;
     width: 100%;
+    z-index: 1;
+    top: 0;
+}
+
+/* NAVIGATION BAR */
+
+.navBar {
     background-color: #ff5555;
     display: flex;
     justify-content: space-between;
@@ -36,14 +44,17 @@ body {
     background-color: #ff0000;
     font-size: 1.5rem;
     text-decoration: none;
+    cursor: pointer;
 }
 
+.navBarButton:hover {
+    background-color: #aa0000;
+}
+
+/* MENU BAR */
 .menuBar {
-    position: fixed;
-    width: 100%;
     background-color: #55ff55;
     display: flex;
-    top: calc(1.5rem + 20px);
 }
 
 .menuBarButton {
@@ -52,21 +63,43 @@ body {
     background-color: #00ff00;
     font-size: 1.5rem;
     text-decoration: none;
+    cursor: pointer;
 }
 
+.menuBarButton:hover {
+    background-color: #00aa00;
+}
+
+.contentContainer {
+    display: flex;
+}
+
+/* HORIZONTAL PAGE SECTIONS */
+
 .leftContainer {
-    position: relative;
-    top: 100px;
-    width: 60%;
-    float: left;
+    /* position: relative; */
+    /* top: 96px; */
+    /* width: 60%; */
+    flex: 3;
     padding: 20px;
+    padding-right: 10px;
+    display: flex;
 }
 
 .rightContainer {
-    
-    position: relative;
-    top: 100px;
-    width: 40%;
-    float: right;
+    /* position: relative; */
+    /* top: 96px; */
+    /* width: 40%; */
+    flex: 2;
     padding: 20px;
+    padding-left: 10px;
+    display: flex;
+}
+
+.mainBlock { /* Style for yellow box around elements */
+    border-radius: 10px;
+    background-color: #ffff00;
+    padding: 20px;
+    width: 100%;
+    height: fit-content;
 }
