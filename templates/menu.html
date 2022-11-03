@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" href="../static/css/main.css">
+    <script src="https://unpkg.com/htmx.org@1.8.2"></script>
+</head>
+
+<body>
+    <div class="navBar">
+        <a href="/" class="navBarButton">HOME</a>
+        <a href="/login" class="navBarButton">Login</a>
+    </div>
+    <div class="menuBar">
+        <a hx-trigger="click" hx-get="/pizzas" hx-target=".leftContainer" class="menuBarButton">Pizzas</a>
+        <a hx-trigger="click" hx-get="/drinks" hx-target=".leftContainer" class="menuBarButton">Drinks</a>
+        <a hx-trigger="click" hx-get="/desserts" hx-target=".leftContainer" class="menuBarButton">Desserts</a>
+    </div>
+    <div class="leftContainer"></div>
+    <div class="rightContainer"></div>
+</body>
