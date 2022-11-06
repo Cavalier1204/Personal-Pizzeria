@@ -10,6 +10,10 @@ def homepage():
 def menu():
     return render_template("menu.html")
 
+@app.route("/cart", methods=["GET"])
+def cart():
+    return render_template("cart.html")
+
 @app.route("/pizzas", methods=["GET"])
 def pizzas():
     return render_template("pizzas.html")

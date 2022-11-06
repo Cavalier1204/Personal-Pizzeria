@@ -6,6 +6,10 @@
 html {
     font-size: 16px;
     font-family: Arial, Helvetica, sans-serif;
+    --mainRed: #f00;
+    --mainOrange: #f80;
+    --mainYellow: #ff0;
+    --mainGreen: #0f0;
 }
 
 body {
@@ -41,7 +45,7 @@ body {
 .navBarButton {
     color: white;
     padding: 10px;
-    background-color: #ff0000;
+    background-color: var(--mainRed);
     font-size: 1.5rem;
     text-decoration: none;
     cursor: pointer;
@@ -61,7 +65,7 @@ body {
 .menuBarButton {
     color: white;
     padding: 10px;
-    background-color: #00ff00;
+    background-color: var(--mainGreen);
     font-size: 1.5rem;
     text-decoration: none;
     cursor: pointer;
@@ -78,14 +82,14 @@ body {
 /* HORIZONTAL PAGE SECTIONS */
 
 .leftContainer {
-    flex: 3;
+    flex: 2;
     padding: 20px;
     padding-right: 10px;
     display: flex;
 }
 
 .rightContainer {
-    flex: 2;
+    flex: 1;
     padding: 20px;
     padding-left: 10px;
     display: flex;
@@ -95,8 +99,36 @@ body {
 
 .mainBlock {
     border-radius: 10px;
-    background-color: #ffff00;
+    background-color: var(--mainYellow);
     padding: 20px;
     width: 100%;
     height: fit-content;
+}
+
+/* Menu items */
+
+.menu {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+}
+
+.menuItem {
+    border-radius: 10px;
+    background-color: var(--mainOrange);
+    padding: 10px;
+    height: fit-content;
+}
+
+.menuItem img {
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Cart */
+
+.cartButton {
+    border: none;
+    display: flex;
+    justify-content: space-between;
 }

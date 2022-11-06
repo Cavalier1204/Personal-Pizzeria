@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html>
 
 <head>
     <link rel="stylesheet" href="../static/css/main.css">
@@ -12,21 +13,15 @@
             <a href="/login" class="navBarButton">Login</a>
         </div>
         <div class="menuBar">
-            <a hx-trigger="click" hx-get="/pizzas" hx-target=".leftContainer" class="menuBarButton">Pizzas</a>
-            <a hx-trigger="click" hx-get="/drinks" hx-target=".leftContainer" class="menuBarButton">Drinks</a>
-            <a hx-trigger="click" hx-get="/desserts" hx-target=".leftContainer" class="menuBarButton">Desserts</a>
+            <a class="menuBarButton" hx-trigger="click" hx-get="/pizzas" hx-target=".leftContainer">Pizzas</a>
+            <a class="menuBarButton" hx-trigger="click" hx-get="/drinks" hx-target=".leftContainer">Drinks</a>
+            <a class="menuBarButton" hx-trigger="click" hx-get="/desserts" hx-target=".leftContainer">Desserts</a>
         </div>
     </div>
     <div class="contentContainer">
-        <div class="leftContainer">
-            <div class="mainBlock">
-                This is 60% of the page width, or 3/5.
-            </div>
-        </div>
-        <div class="rightContainer">
-            <div class="mainBlock">
-                And this is 40% of the page width, or 2/5.
-            </div>
-        </div>
+        <div class="leftContainer" hx-trigger="load" hx-get="/pizzas"></div>
+        <div class="rightContainer" hx-trigger="load" hx-get="/cart"></div>
     </div>
 </body>
+
+</html>
