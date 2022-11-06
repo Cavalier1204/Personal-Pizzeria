@@ -9,7 +9,7 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     width: 100%;
     padding-top: 96px;
 }
@@ -52,6 +52,7 @@ body {
 }
 
 /* MENU BAR */
+
 .menuBar {
     background-color: #55ff55;
     display: flex;
@@ -77,9 +78,6 @@ body {
 /* HORIZONTAL PAGE SECTIONS */
 
 .leftContainer {
-    /* position: relative; */
-    /* top: 96px; */
-    /* width: 60%; */
     flex: 3;
     padding: 20px;
     padding-right: 10px;
@@ -87,16 +85,15 @@ body {
 }
 
 .rightContainer {
-    /* position: relative; */
-    /* top: 96px; */
-    /* width: 40%; */
     flex: 2;
     padding: 20px;
     padding-left: 10px;
     display: flex;
 }
 
-.mainBlock { /* Style for yellow box around elements */
+/* Style for yellow box around elements */
+
+.mainBlock {
     border-radius: 10px;
     background-color: #ffff00;
     padding: 20px;
