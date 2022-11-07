@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 
@@ -14,8 +14,12 @@ def menu():
 def cart():
     return render_template("cart.html")
 
-@app.route("/pizzas", methods=["GET"])
+@app.route("/pizzas", methods=['GET', 'POST'])
 def pizzas():
+    if request.method == 'POST':
+        print(request.method)
+        print(request.query_string)
+        return redirect("/cart")
     return render_template("pizzas.html")
 
 @app.route("/drinks", methods=["GET"])

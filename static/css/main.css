@@ -27,6 +27,10 @@ body {
     text-decoration: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 .topBar {
     position: fixed;
     width: 100%;
@@ -128,11 +132,7 @@ body {
 /* Cart */
 
 .cartBlock {
-    border-radius: 10px;
-    background-color: var(--mainYellow);
-    padding: 0 20px 20px 20px;
-    width: 100%;
-    height: fit-content;
+    padding: 0;
 }
 
 .cartButton {
@@ -140,12 +140,13 @@ body {
     display: flex;
     justify-content: space-between;
     background-color: var(--mainOrange);
-    padding: 10px;
+    padding: 20px;
     border-radius: 10px;
 }
 
 .cartContent {
     display: none;
+    padding: 20px;
 }
 
 .cartButton .accordionSymbol::after {
