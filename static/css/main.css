@@ -127,8 +127,31 @@ body {
 
 /* Cart */
 
+.cartBlock {
+    border-radius: 10px;
+    background-color: var(--mainYellow);
+    padding: 0 20px 20px 20px;
+    width: 100%;
+    height: fit-content;
+}
+
 .cartButton {
     border: none;
     display: flex;
     justify-content: space-between;
+    background-color: var(--mainOrange);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.cartContent {
+    display: none;
+}
+
+.cartButton .accordionSymbol::after {
+    content: "\02C5";
+}
+
+.cartButton.active .accordionSymbol::after {
+  content: "\02C4";
 }

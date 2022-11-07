@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <script src="https://unpkg.com/htmx.org@1.8.2"></script>
-</head>
-
 <body>
-    <button class="cartButton mainBlock">
-        <div>
-            Cart
+    <div class="mainBlock">
+
+        <div class="cartButton">
+            <h1>
+                Cart
+            </h1>
+            <h1 class="accordionSymbol"></h1>
         </div>
-        <div class="accordionSymbol"></div>
-    </button>
-    <!-- <div class="mainBlock">
-        alright so you got one pizza, and one pizza
-    </div> -->
+
+        <div class="cartContent">
+            Hello i am the content of the cart
+        </div>
+
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("cartButton");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }</script>
+
 </body>
 
 </html>
