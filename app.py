@@ -2,6 +2,8 @@ from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 
+order = []
+
 @app.route("/")
 def homepage():
     return render_template("index.html")
@@ -10,16 +12,17 @@ def homepage():
 def menu():
     return render_template("menu.html")
 
-@app.route("/cart", methods=["GET"])
+@app.route("/cart", methods=["GET", "POST"])
 def cart():
-    return render_template("cart.html")
+    if request.method == "POST":
+        print(request.args.get("pizzaOrder"))
+        order.append(request.args.get("pizzaOrder"))
+        print(order)
+    return render_template("cart.html", order = order)
 
-@app.route("/pizzas", methods=['GET', 'POST'])
+@app.route("/pizzas", methods=["GET", "POST"])
 def pizzas():
-    if request.method == 'POST':
-        print(request.method)
-        print(request.query_string)
-        return redirect("/cart")
+        # return redirect("/cart")
     return render_template("pizzas.html")
 
 @app.route("/drinks", methods=["GET"])
