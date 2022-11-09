@@ -3,60 +3,69 @@
 
 <body>
     <div class="menu">
-        <div class="menuItem">
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
             <h3>Margherita</h3>
             <h4>sauce and cheese</h4>
-            <button hx-post="/cart?pizzaOrder=margaritha" hx-trigger="click" hx-target=".cartBlock">add</button>
-        </div>
-        <div class="menuItem">
+            <input type="hidden" name="order" value="Margherita">
+            <input type="submit" value="add">
+        </form>
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
-            <h3>Margherita</h3>
+            <h3>Pepperoni</h3>
             <h4>sauce and cheese</h4>
-            <a href="/pizzas?margherita">add</a>
-        </div>
-        <div class="menuItem">
+            <input type="hidden" name="order" value="Pepperoni">
+            <input type="submit" value="add">
+        </form>
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
-            <h3>Margherita</h3>
+            <h3>BBQ Chicken</h3>
             <h4>sauce and cheese</h4>
-            <a href="/pizzas?margherita">add</a>
-        </div>
-        <div class="menuItem">
+            <input type="hidden" name="order" value="BBQ Chicken">
+            <input type="submit" value="add">
+        </form>
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
-            <h3>Margherita</h3>
+            <h3>Shoarma</h3>
             <h4>sauce and cheese</h4>
-            <a href="/pizzas?margherita">add</a>
-        </div>
-        <div class="menuItem">
+            <input type="hidden" name="order" value="Shoarma">
+            <input type="submit" value="add">
+        </form>
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
-            <h3>Margherita</h3>
+            <h3>Prosciutto</h3>
             <h4>sauce and cheese</h4>
-            <a href="/pizzas?margherita">add</a>
-        </div>
-        <div class="menuItem">
+            <input type="hidden" name="order" value="Prosciutto">
+            <input type="submit" value="add">
+        </form>
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
-            <h3>Margherita</h3>
+            <h3>Calzone</h3>
             <h4>sauce and cheese</h4>
-            <a href="/pizzas?margherita">add</a>
-        </div>
-        <div class="menuItem">
+            <input type="hidden" name="order" value="Calzone">
+            <input type="submit" value="add">
+        </form>
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
-            <h3>Margherita</h3>
+            <h3>Contadina</h3>
             <h4>sauce and cheese</h4>
-            <a href="/pizzas?margherita">add</a>
-        </div>
-        <div class="menuItem">
+            <input type="hidden" name="order" value="Contadina">
+            <input type="submit" value="add">
+        </form>
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
-            <h3>Margherita</h3>
+            <h3>Nutella</h3>
             <h4>sauce and cheese</h4>
-            <a href="/pizzas?margherita">add</a>
-        </div>
-        <div class="menuItem">
+            <input type="hidden" name="order" value="Nutella">
+            <input type="submit" value="add">
+        </form>
+        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
             <img src="../static/images/pizza.png">
-            <h3>Margherita</h3>
+            <h3>Vegan</h3>
             <h4>sauce and cheese</h4>
-            <a href="/pizzas?margherita">add</a>
-        </div>
+            <input type="hidden" name="order" value="Vegan">
+            <input type="submit" value="add">
+        </form>
     </div>
 </body>
 

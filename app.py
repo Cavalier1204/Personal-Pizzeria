@@ -12,17 +12,19 @@ def homepage():
 def menu():
     return render_template("menu.html")
 
-@app.route("/cart", methods=["GET", "POST"])
+@app.route("/cart", methods=["GET"])
 def cart():
+    return render_template("cart.html")
+
+@app.route("/cartcontent", methods=["GET", "POST"])
+def cartcontent():
     if request.method == "POST":
-        print(request.args.get("pizzaOrder"))
-        order.append(request.args.get("pizzaOrder"))
+        order.append(request.form["order"])
         print(order)
-    return render_template("cart.html", order = order)
+    return render_template("cart_content.html", order = order)
 
 @app.route("/pizzas", methods=["GET", "POST"])
 def pizzas():
-        # return redirect("/cart")
     return render_template("pizzas.html")
 
 @app.route("/drinks", methods=["GET"])

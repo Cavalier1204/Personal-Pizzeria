@@ -11,9 +11,7 @@
             <h1 class="accordionSymbol"></h1>
         </div>
 
-        <div class="cartContent">
-            {{order}}
-        </div>
+        <div class="cartContentOuter" hx-trigger="load" hx-get="/cartcontent"></div>
 
     </div>
 
