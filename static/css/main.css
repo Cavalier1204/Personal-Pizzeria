@@ -152,14 +152,13 @@ a {
 }
 
 .cartContentOuter {
-    display: none;
     padding: 20px;
 }
 
-.cartButton .accordionSymbol::after {
+.cartButton.active .accordionSymbol::after {
     content: "\02C5";
 }
 
-.cartButton.active .accordionSymbol::after {
+.cartButton .accordionSymbol::after {
   content: "\02C4";
 }
