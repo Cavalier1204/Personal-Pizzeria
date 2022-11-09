@@ -20,7 +20,6 @@ def cart():
 def cartcontent():
     if request.method == "POST":
         order.append(request.form["order"])
-        print(order)
     return render_template("cart_content.html", order = order)
 
 @app.route("/pizzas", methods=["GET", "POST"])

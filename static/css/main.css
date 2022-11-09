@@ -122,12 +122,18 @@ a {
     border-radius: 10px;
     background-color: var(--mainOrange);
     padding: 10px;
-    /* height: fit-content; */
+    height: fit-content;
 }
 
 .menuItem img {
     object-fit: cover;
     width: 100%;
+}
+
+.menuItemDescription {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 /* Cart */
