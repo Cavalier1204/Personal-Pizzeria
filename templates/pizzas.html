@@ -3,19 +3,19 @@
 
 <body>
     <div class="menu">
-        {% for dict in listOfPizzas %}
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src='../static/images/{{dict["image"]}}'>
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>{{dict["name"]}}</h3>
-                    <h4>{{dict["ingredients"]}}</h4>
-                    <h4>&euro;{{'{:.2f}'.format(dict["price"])}}</h4>
+        {% for pizza in listOfPizzas %}
+            <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
+                <img src='../static/images/{{pizza["image"]}}'>
+                <div class="menuItemDescription">
+                    <div class="menuItemText">
+                        <h3>{{pizza["name"]}}</h3>
+                        <h4>{{pizza["ingredients"]}}</h4>
+                        <h4>&euro;{{'{:.2f}'.format(pizza["price"])}}</h4>
+                    </div>
+                    <input type="hidden" name="order" value="{{pizza['name']}}">
+                    <input type="submit" value="add" class="menuAddButton">
                 </div>
-                <input type="hidden" name="order" value="{{dict['name']}}">
-                <input type="submit" value="add" class="menuAddButton">
-            </div>
-        </form>
+            </form>
         {% endfor %}
     </div>
 

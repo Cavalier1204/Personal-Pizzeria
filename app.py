@@ -67,7 +67,7 @@ listOfPizzas = [
         "ingredients" : "Tomato sauce, vegan mozzarella, cherry tomatoes",
         "price" : 4.5,
         "image" : "pizza.png"
-    },
+    }
 ]
 
 @app.route("/")
