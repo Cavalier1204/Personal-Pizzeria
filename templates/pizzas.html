@@ -10,14 +10,30 @@
                 <div class="menuItemText">
                     <h3>{{dict["name"]}}</h3>
                     <h4>{{dict["ingredients"]}}</h4>
-                    <h4>&euro;{{dict["price"]}}</h4>
+                    <h4>&euro;{{'{:.2f}'.format(dict["price"])}}</h4>
                 </div>
                 <input type="hidden" name="order" value="{{dict['name']}}">
-                <input type="submit" value="add">
+                <input type="submit" value="add" class="menuAddButton">
             </div>
         </form>
         {% endfor %}
     </div>
+
+    <script>
+        var addButtons = document.getElementsByClassName("menuAddButton");
+        var i;
+        
+        for (i = 0; i < addButtons.length; i++) {
+            addButtons[i].addEventListener("click", function () {
+                var cart = document.querySelector(".cartBlock");
+                
+                if (!cart.classList.contains('active')) {
+                    cart.classList.add("active");
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>

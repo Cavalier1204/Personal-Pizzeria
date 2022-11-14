@@ -142,6 +142,10 @@ a {
     padding: 0;
 }
 
+.cartBlock.active .cartButton .accordionSymbol::after {
+    content: "\02C4";
+}
+
 .cartButton {
     border: none;
     display: flex;
@@ -156,10 +160,10 @@ a {
     padding: 20px;
 }
 
-.cartButton .accordionSymbol::after {
-    content: "\02C5";
+.cartBlock.active .cartContentOuter {
+    display: block;
 }
 
-.cartButton.active .accordionSymbol::after {
-  content: "\02C4";
+.cartButton .accordionSymbol::after {
+    content: "\02C5";
 }
