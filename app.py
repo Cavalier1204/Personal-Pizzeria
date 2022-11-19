@@ -88,18 +88,19 @@ def menu():
 def cart():
     return render_template("cart.html")
 
-@app.route("/cartcontent", methods=["GET", "POST"])
+@app.route("/cartcontent", methods=["GET", "POST", "DELETE"])
 def cartcontent():
     global order, totalPrice
     if request.method == "POST":
-        orderId = request.form["order"]
-        if 'del' in orderId:
-            delItem = int(orderId.replace("del",""))
-            removeItem(delItem)
-            totalPrice -= float(listOfPizzas[delItem]["price"])
-        else:
-            order.append(int(orderId))
-            totalPrice += float(listOfPizzas[int(orderId)]["price"])
+        orderId = int(request.form["order"])   
+        order.append(orderId)
+        totalPrice += float(listOfPizzas[orderId]["price"])
+
+    elif request.method == "DELETE":
+        orderId = int(request.form["order"])
+        removeItem(orderId)
+        totalPrice -= float(listOfPizzas[orderId]["price"])
+
     return render_template("cart_content.html", order = order, listOfPizzas = listOfPizzas, totalPrice = totalPrice)
 
 @app.route("/pizzas", methods=["GET", "POST"])

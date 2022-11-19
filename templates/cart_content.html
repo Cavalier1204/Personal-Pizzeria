@@ -12,8 +12,8 @@
                         <td>{{item["ingredients"]}}</td>
                         <td>&euro;{{'{:.2f}'.format(item["price"]).replace('.',',')}}</td>
                         <td>
-                            <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
-                                <input type="hidden" name="order" value="{{item['id']}}del">
+                            <form hx-delete="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
+                                <input type="hidden" name="order" value="{{item['id']}}">
                                 <input type="submit" value="del">
                             </form>
                         </td>
