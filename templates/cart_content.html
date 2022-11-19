@@ -3,7 +3,26 @@
 
 <body>
     <div class="cartContent">
-        {{order}}
+        <table>
+            {% for orderItem in order %}
+                <tr>
+                {% for item in listOfPizzas %}
+                    {% if item["id"] == orderItem %}
+                        <td>{{item["name"]}}</td>
+                        <td>{{item["ingredients"]}}</td>
+                        <td>&euro;{{'{:.2f}'.format(item["price"]).replace('.',',')}}</td>
+                        <td>
+                            <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
+                                <input type="hidden" name="order" value="{{item['id']}}del">
+                                <input type="submit" value="del">
+                            </form>
+                        </td>
+                    {% endif %}
+                {% endfor %}
+                </tr>
+            {% endfor %}
+            <tr>&euro;{{'{:.2f}'.format(totalPrice).replace('.',',')}}</tr>
+        </table>
     </div>
 </body>
 

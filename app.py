@@ -3,72 +3,78 @@ from flask import Flask, render_template, redirect, request
 app = Flask(__name__)
 
 order = []
+totalPrice = 0
 
 listOfPizzas = [
     { # Margherita
-        "id" : 1,
+        "id" : 0,
         "name" : "Margherita",
         "ingredients" : "Tomato sauce, mozzarella",
         "price" : 4.0,
         "image" : "pizza.png"
     },
     { # Pepperoni
-        "id" : 2,
+        "id" : 1,
         "name" : "Pepperoni",
         "ingredients" : "Tomato sauce, mozzarella, pepperoni",
         "price" : 5.0,
         "image" : "pizza.png"
     },
     { # BBQ Chicken
-        "id" : 3,
+        "id" : 2,
         "name" : "BBQ Chicken",
         "ingredients" : "Tomato sauce, mozzarella, chicken, BBQ sauce",
         "price" : 6.5,
         "image" : "pizza.png"
     },
     { # Shoarma
-        "id" : 4,
+        "id" : 3,
         "name" : "Shoarma",
         "ingredients" : "Tomato sauce, mozzarella, chicken shoarma, garlic sauce",
         "price" : 6.5,
         "image" : "pizza.png"
     },
     { # Prosciutto
-        "id" : 5,
+        "id" : 4,
         "name" : "Prosciutto",
         "ingredients" : "Tomato sauce, parmesan cheese, prosciutto crudo, arugula",
         "price" : 5.5,
         "image" : "pizza.png"
     },
     { # Calzone
-        "id" : 6,
+        "id" : 5,
         "name" : "Calzone",
         "ingredients" : "Tomato sauce, mozzarella, salami, folded in",
         "price" : 6.5,
         "image" : "pizza.png"
     },
     { # Contadina
-        "id" : 7,
+        "id" : 6,
         "name" : "Contadina",
         "ingredients" : "Tomato sauce, mozzarella, cherry tomatoes, arugula",
         "price" : 5.5,
         "image" : "pizza.png"
     },
     { # Nutella
-        "id" : 8,
+        "id" : 7,
         "name" : "Nutella",
         "ingredients" : "Nutella, powdered sugar",
         "price" : 4.0,
         "image" : "pizza.png"
     },
     { # Vegan
-        "id" : 9,
+        "id" : 8,
         "name" : "Vegan",
         "ingredients" : "Tomato sauce, vegan mozzarella, cherry tomatoes",
         "price" : 4.5,
         "image" : "pizza.png"
     }
 ]
+
+def removeItem(delItemId):
+    global order
+    deleteIndex = order.index(delItemId)
+    order.pop(deleteIndex)
 
 @app.route("/")
 def homepage():
@@ -84,9 +90,17 @@ def cart():
 
 @app.route("/cartcontent", methods=["GET", "POST"])
 def cartcontent():
+    global order, totalPrice
     if request.method == "POST":
-        order.append(request.form["order"])
-    return render_template("cart_content.html", order = order)
+        orderId = request.form["order"]
+        if 'del' in orderId:
+            delItem = int(orderId.replace("del",""))
+            removeItem(delItem)
+            totalPrice -= float(listOfPizzas[delItem]["price"])
+        else:
+            order.append(int(orderId))
+            totalPrice += float(listOfPizzas[int(orderId)]["price"])
+    return render_template("cart_content.html", order = order, listOfPizzas = listOfPizzas, totalPrice = totalPrice)
 
 @app.route("/pizzas", methods=["GET", "POST"])
 def pizzas():
