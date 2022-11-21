@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, request
 
 app = Flask(__name__)
 
-order = []
+order = {} # Pizza ID : Amount
 totalPrice = 0
 
 listOfPizzas = [
@@ -93,12 +93,22 @@ def cartcontent():
     global order, totalPrice
     if request.method == "POST":
         orderId = int(request.form["order"])   
-        order.append(orderId)
+        # order.append(orderId)
+        if orderId in order.keys():
+            order[orderId] += 1
+        else:
+            order[orderId] = 1
+        print(order)
         totalPrice += float(listOfPizzas[orderId]["price"])
 
     elif request.method == "DELETE":
         orderId = int(request.form["order"])
-        removeItem(orderId)
+        # removeItem(orderId)
+        if (order[orderId] - 1) < 1:
+            del order[orderId]
+        else:
+            order[orderId] -= 1
+        print(order)
         totalPrice -= float(listOfPizzas[orderId]["price"])
 
     return render_template("cart_content.html", order = order, listOfPizzas = listOfPizzas, totalPrice = totalPrice)

@@ -4,13 +4,13 @@
 <body>
     <div class="cartContent">
         <table>
-            {% for orderItem in order %}
+            {% for orderId in order %}
                 <tr>
                 {% for item in listOfPizzas %}
-                    {% if item["id"] == orderItem %}
+                    {% if item["id"] in order.keys() %}
                         <td>{{item["name"]}}</td>
-                        <td>{{item["ingredients"]}}</td>
-                        <td>&euro;{{'{:.2f}'.format(item["price"]).replace('.',',')}}</td>
+                        <td>{{order[orderId]}}</td>
+                        <td>&euro;{{'{:.2f}'.format(item["price"]*order[orderId]).replace('.',',')}}</td>
                         <td>
                             <form hx-delete="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
                                 <input type="hidden" name="order" value="{{item['id']}}">
