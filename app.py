@@ -108,7 +108,9 @@ def cartcontent():
 
 @app.route("/deletecartitem", methods=["DELETE"])
 def deleteCartItem():
+    global totalPrice
     orderId = int(request.form["delete"])
+    totalPrice -= float(listOfPizzas[orderId]["price"] * order[orderId])
     del order[orderId]
     return render_template("cart_content.html", order = order, listOfPizzas = listOfPizzas, totalPrice = totalPrice)
 
