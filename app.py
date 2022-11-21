@@ -87,7 +87,7 @@ def cart():
 def cartcontent():
     global order, totalPrice
     if request.method == "POST":
-        orderId = int(request.form["order"])
+        orderId = int(request.form["add"])
         if orderId in order.keys():
             order[orderId] += 1
         else:
@@ -96,7 +96,7 @@ def cartcontent():
         totalPrice += float(listOfPizzas[orderId]["price"])
 
     elif request.method == "DELETE":
-        orderId = int(request.form["order"])
+        orderId = int(request.form["subtract"])
         if (order[orderId] - 1) < 1:
             del order[orderId]
         else:
@@ -104,6 +104,12 @@ def cartcontent():
         print(order)
         totalPrice -= float(listOfPizzas[orderId]["price"])
 
+    return render_template("cart_content.html", order = order, listOfPizzas = listOfPizzas, totalPrice = totalPrice)
+
+@app.route("/deletecartitem", methods=["DELETE"])
+def deleteCartItem():
+    orderId = int(request.form["delete"])
+    del order[orderId]
     return render_template("cart_content.html", order = order, listOfPizzas = listOfPizzas, totalPrice = totalPrice)
 
 @app.route("/pizzas", methods=["GET", "POST"])

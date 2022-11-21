@@ -12,8 +12,20 @@
                         <td>{{order[orderId]}}</td>
                         <td>&euro;{{'{:.2f}'.format(item["price"]*order[orderId]).replace('.',',')}}</td>
                         <td>
+                            <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
+                                <input type="hidden" name="add" value="{{item['id']}}">
+                                <input type="submit" value="+">
+                            </form>
+                        </td>
+                        <td>
                             <form hx-delete="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
-                                <input type="hidden" name="order" value="{{item['id']}}">
+                                <input type="hidden" name="subtract" value="{{item['id']}}">
+                                <input type="submit" value="-">
+                            </form>
+                        </td>
+                        <td>
+                            <form hx-delete="/deletecartitem" hx-target=".cartContent" hx-trigger="submit">
+                                <input type="hidden" name="delete" value="{{item['id']}}">
                                 <input type="submit" value="del">
                             </form>
                         </td>

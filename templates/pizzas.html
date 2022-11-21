@@ -12,7 +12,7 @@
                         <h4>{{pizza["ingredients"]}}</h4>
                         <h4>&euro;{{'{:.2f}'.format(pizza["price"]).replace('.',',')}}</h4>
                     </div>
-                    <input type="hidden" name="order" value="{{pizza['id']}}">
+                    <input type="hidden" name="add" value="{{pizza['id']}}">
                     <input type="submit" value="add" class="menuAddButton">
                 </div>
             </form>
