@@ -71,11 +71,6 @@ listOfPizzas = [
     }
 ]
 
-def removeItem(delItemId):
-    global order
-    deleteIndex = order.index(delItemId)
-    order.pop(deleteIndex)
-
 @app.route("/")
 def homepage():
     return render_template("index.html")
@@ -92,8 +87,7 @@ def cart():
 def cartcontent():
     global order, totalPrice
     if request.method == "POST":
-        orderId = int(request.form["order"])   
-        # order.append(orderId)
+        orderId = int(request.form["order"])
         if orderId in order.keys():
             order[orderId] += 1
         else:
@@ -103,7 +97,6 @@ def cartcontent():
 
     elif request.method == "DELETE":
         orderId = int(request.form["order"])
-        # removeItem(orderId)
         if (order[orderId] - 1) < 1:
             del order[orderId]
         else:
