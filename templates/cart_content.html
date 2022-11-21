@@ -7,7 +7,7 @@
             {% for orderId in order %}
                 <tr>
                 {% for item in listOfPizzas %}
-                    {% if item["id"] in order.keys() %}
+                    {% if item["id"] == orderId %}
                         <td>{{item["name"]}}</td>
                         <td>{{order[orderId]}}</td>
                         <td>&euro;{{'{:.2f}'.format(item["price"]*order[orderId]).replace('.',',')}}</td>
