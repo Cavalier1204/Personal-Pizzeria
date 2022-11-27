@@ -3,106 +3,36 @@
 
 <body>
     <div class="menu">
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
+        {% for dessert in listOfDesserts %}
+            <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
+                <img src='../static/images/{{dessert["image"]}}'>
+                <div class="menuItemDescription">
+                    <div class="menuItemText">
+                        <h3>{{dessert["name"]}}</h3>
+                        <h4>&euro;{{'{:.2f}'.format(dessert["price"]).replace('.',',')}}</h4>
+                    </div>
+                    <input type="hidden" name="add" value="{{dessert['id']}}">
+                    <input type="submit" value="add" class="menuAddButton">
                 </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
-                </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
-                </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
-                </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
-                </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
-                </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
-                </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
-                </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cookie.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Margherita</h3>
-                    <h4>sauce and cheese</h4>
-                </div>
-                <input type="hidden" name="order" value="Margherita">
-                <input type="submit" value="add">
-            </div>
-        </form>
+            </form>
+        {% endfor %}
     </div>
+
+    <script>
+        var addButtons = document.getElementsByClassName("menuAddButton");
+        var i;
+        
+        for (i = 0; i < addButtons.length; i++) {
+            addButtons[i].addEventListener("click", function () {
+                var cart = document.querySelector(".cartBlock");
+                
+                if (!cart.classList.contains('active')) {
+                    cart.classList.add("active");
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>
