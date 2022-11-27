@@ -164,12 +164,13 @@ listOfDrinks = []
 listOfDesserts = []
 
 for item in menuItems:
-    if item["type"] == 1:
-        listOfPizzas.append(item)
-    elif item["type"] == 2:
-        listOfDrinks.append(item)
-    elif item["type"] == 3:
-        listOfDesserts.append(item)
+    match item["type"]:
+        case 1:
+            listOfPizzas.append(item)
+        case 2:
+            listOfDrinks.append(item)
+        case 3:
+            listOfDesserts.append(item)
 
 @app.route("/")
 def homepage():
