@@ -3,97 +3,36 @@
 
 <body>
     <div class="menu">
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Cola</h3>
+        {% for drink in listOfDrinks %}
+            <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
+                <img src='../static/images/{{drink["image"]}}'>
+                <div class="menuItemDescription">
+                    <div class="menuItemText">
+                        <h3>{{drink["name"]}}</h3>
+                        <h4>&euro;{{'{:.2f}'.format(drink["price"]).replace('.',',')}}</h4>
+                    </div>
+                    <input type="hidden" name="add" value="{{drink['id']}}">
+                    <input type="submit" value="add" class="menuAddButton">
                 </div>
-                <input type="hidden" name="order" value="Cola">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Fanta Orange</h3>
-                </div>
-                <input type="hidden" name="order" value="Fanta">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Fanta Cassis</h3>
-                </div>
-                <input type="hidden" name="order" value="Cassis">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Sprite</h3>
-                </div>
-                <input type="hidden" name="order" value="Sprite">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>7Up</h3>
-                </div>
-                <input type="hidden" name="order" value="7Up">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Apple juice</h3>
-                </div>
-                <input type="hidden" name="order" value="Apple juice">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Chocolate milkshake</h3>
-                </div>
-                <input type="hidden" name="order" value="Chocolate milkshake">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Strawberry milkshake</h3>
-                </div>
-                <input type="hidden" name="order" value="Strawberry milkshake">
-                <input type="submit" value="add">
-            </div>
-        </form>
-        <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit" class="menuItem">
-            <img src="../static/images/cola.png">
-            <div class="menuItemDescription">
-                <div class="menuItemText">
-                    <h3>Banana milkshake</h3>
-                </div>
-                <input type="hidden" name="order" value="Banana milkshake">
-                <input type="submit" value="add">
-            </div>
-        </form>
+            </form>
+        {% endfor %}
     </div>
+
+    <script>
+        var addButtons = document.getElementsByClassName("menuAddButton");
+        var i;
+        
+        for (i = 0; i < addButtons.length; i++) {
+            addButtons[i].addEventListener("click", function () {
+                var cart = document.querySelector(".cartBlock");
+                
+                if (!cart.classList.contains('active')) {
+                    cart.classList.add("active");
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>

@@ -6,7 +6,7 @@
         <table>
             {% for orderId in order %}
                 <tr>
-                {% for item in listOfPizzas %}
+                {% for item in menuItems %}
                     {% if item["id"] == orderId %}
                         <td>{{item["name"]}}</td>
                         <td>{{order[orderId]}}</td>
