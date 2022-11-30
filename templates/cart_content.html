@@ -5,36 +5,39 @@
     <div class="cartContent">
         <table>
             {% for orderId in order %}
-                <tr>
+            <tr>
                 {% for item in menuItems %}
-                    {% if item["id"] == orderId %}
-                        <td>{{item["name"]}}</td>
-                        <td>{{order[orderId]}}</td>
-                        <td>&euro;{{'{:.2f}'.format(item["price"]*order[orderId]).replace('.',',')}}</td>
-                        <td>
-                            <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
-                                <input type="hidden" name="add" value="{{item['id']}}">
-                                <input type="submit" value="+">
-                            </form>
-                        </td>
-                        <td>
-                            <form hx-delete="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
-                                <input type="hidden" name="subtract" value="{{item['id']}}">
-                                <input type="submit" value="-">
-                            </form>
-                        </td>
-                        <td>
-                            <form hx-delete="/deletecartitem" hx-target=".cartContent" hx-trigger="submit">
-                                <input type="hidden" name="delete" value="{{item['id']}}">
-                                <input type="submit" value="del">
-                            </form>
-                        </td>
-                    {% endif %}
+                {% if item["id"] == orderId %}
+                <td>{{item["name"]}}</td>
+                <td>{{order[orderId]}}</td>
+                <td>&euro;{{'{:.2f}'.format(item["price"]*order[orderId]).replace('.',',')}}</td>
+                <td>
+                    <form hx-post="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
+                        <input type="hidden" name="add" value="{{item['id']}}">
+                        <input type="submit" value="+">
+                    </form>
+                </td>
+                <td>
+                    <form hx-delete="/cartcontent" hx-target=".cartContent" hx-trigger="submit">
+                        <input type="hidden" name="subtract" value="{{item['id']}}">
+                        <input type="submit" value="-">
+                    </form>
+                </td>
+                <td>
+                    <form hx-delete="/deletecartitem" hx-target=".cartContent" hx-trigger="submit">
+                        <input type="hidden" name="delete" value="{{item['id']}}">
+                        <input type="submit" value="del">
+                    </form>
+                </td>
+                {% endif %}
                 {% endfor %}
-                </tr>
+            </tr>
             {% endfor %}
-            <tr>&euro;{{'{:.2f}'.format(totalPrice).replace('.',',')}}</tr>
         </table>
+        &euro;{{'{:.2f}'.format(totalPrice).replace('.',',')}}<br>
+        <form hx-delete="/emptycart" hx-target=".cartContent" hx-trigger="submit">
+            <input type="submit" value="empty">
+        </form>
     </div>
 </body>
 

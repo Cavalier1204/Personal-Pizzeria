@@ -153,7 +153,7 @@ menuItems = [
     { # Ice cream
         "id" : 18,
         "type" : 3,
-        "name" : "Ice cream",
+        "name" : "Chocolate cookie",
         "price" : 3.0,
         "image" : "cookie.png"
     }
@@ -202,15 +202,23 @@ def cartcontent():
         else:
             order[orderId] -= 1
         totalPrice -= float(menuItems[orderId]["price"])
-
+    print(order)
     return render_template("cart_content.html", order = order, menuItems = menuItems, totalPrice = totalPrice)
 
 @app.route("/deletecartitem", methods=["DELETE"])
-def deleteCartItem():
+def deletecartitem():
     global totalPrice
     orderId = int(request.form["delete"])
     totalPrice -= float(menuItems[orderId]["price"] * order[orderId])
     del order[orderId]
+    return render_template("cart_content.html", order = order, menuItems = menuItems, totalPrice = totalPrice)
+
+@app.route("/emptycart", methods=["DELETE"])
+def emptycart():
+    global totalPrice, order
+    order = {}
+    totalPrice = float(0)
+    print(order)
     return render_template("cart_content.html", order = order, menuItems = menuItems, totalPrice = totalPrice)
 
 @app.route("/pizzas", methods=["GET", "POST"])
