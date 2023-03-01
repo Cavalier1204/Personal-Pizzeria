@@ -47,7 +47,6 @@ def cart():
 
 @app.route("/cartcontent", methods=["GET", "POST", "DELETE"])
 def cartcontent():
-    # print(menuItems)
     global order, totalPrice
     if request.method == "POST":
         orderId = int(request.form["add"])
