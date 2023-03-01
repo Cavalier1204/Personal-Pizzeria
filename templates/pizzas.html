@@ -9,7 +9,7 @@
                 <div class="menuItemDescription">
                     <div class="menuItemText">
                         <h3>{{pizza["name"]}}</h3>
-                        <h4>{{pizza["ingredients"]}}</h4>
+                        <h5 style="opacity: 75%;">{{pizza["ingredients"]}}</h5>
                         <h4>&euro;{{'{:.2f}'.format(pizza["price"]).replace('.',',')}}</h4>
                     </div>
                     <input type="hidden" name="add" value="{{pizza['id']}}">
