@@ -17,7 +17,6 @@ with open("menuitems.csv", 'r') as rdata:
             item["ingredients"] = row[3]
             item["price"] = float(row[4])
             item["image"] = row[5]
-            print(item)
             menuItems.append(item)
 
 listOfPizzas = []
